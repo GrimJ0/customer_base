@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Клиенты{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <div class="container-fluid">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="table-responsive">
+                    <div class="toolbar">
+                        <p class="text-center fs-4 text-white-50">Список Клиентов</p>
+                    </div>
+                    <div class="fresh-table toolbar-color-blue">
+                        <!-- Изменение фона таблицы: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+                        Изменение фона тулбара страницы: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                        -->
+
+                        <table id="fresh-table" class="table">
+                            <thead>
+                            <th data-field="id">Имя</th>
+                            <th data-field="name" data-sortable="true">Фамилия</th>
+                            <th data-field="salary" data-sortable="true">Телефон</th>
+                            <th data-field="country" data-sortable="true">Прайс</th>
+                            <th data-field="city">Черный список</th>
+                            <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">
+                                Действия
+                            </th>
+                            </thead>
+                            <tbody>
+                                {% for client in clients %}
+                                    <tr>
+                                        <td>{{ client.last_name }}</td>
+                                        <td>{{ client.first_name}}</td>
+                                        <td>{{ client.phone}}</td>
+                                        <td>{{ client.price }}</td>
+                                        <td>{{ client.black_list }}</td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+{% endblock %}
