@@ -55,13 +55,13 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active fs-5" aria-current="page" href="{% url 'home' %}">
+                <a class="nav-link {% if home %}active{% endif %} fs-5" aria-current="page" href="{% url 'home' %}">
                     <span data-feather="home"></span>
                     Список клиентов
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fs-5" href="{% url 'new' %}">
+                <a class="nav-link {% if new_client %}active{% endif %} fs-5" href="{% url 'new' %}">
                     <span data-feather="user-plus"></span>
                     Новый клиент
                 </a>

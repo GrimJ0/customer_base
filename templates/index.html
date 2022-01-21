@@ -38,8 +38,8 @@
                     <td>{{ client.count }}</td>
                     <td>{{ client.black_list }}</td>
                     <td>
-
-                        <a rel="tooltip" title="Edit" class="table-action edit" href="#" title="Edit">
+                        <a rel="tooltip" title="Edit" class="table-action edit" href="{% url 'edit_client' client.id %}"
+                           title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
                         <a rel="tooltip" title="Remove" class="table-action remove"
@@ -47,11 +47,6 @@
                            title="Remove">
                             <i class="fa fa-remove"></i>
                         </a>
-
-                        {#                                <form  method="post" rel="tooltip" title="Remove" class="table-action remove" title="Remove">#}
-                        {#                                    {% csrf_token %}#}
-                        {#                                    <button onclick="return confirm('Are you sure?');"><i class="fa fa-remove"></i></button>#}
-                        {#                                </form>#}
                     </td>
                 {% endfor %}
                 </tbody>

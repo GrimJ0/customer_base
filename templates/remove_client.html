@@ -4,14 +4,25 @@
 
 
 {% block content %}
-    <div class="custom-center-block">
-        <form action="" method="post">{% csrf_token %}
-            <p class="custom-text-block">Удалить рецепт</p>
-            <p class="custom-text-block">Вы уверены, что хотите удалить рецепт "{{ client.phone }}"?</p>
-            <div class="custom-button-block">
-                <a href="{% url 'remove_client' client.id %}" class="button_a button_style_blue">Нет</a>
-                <button style="margin-left: 2.5em" class="button button_style_red">Да</button>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Удаление</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Вы уверены, что хотите удалить клиента
+                        {% if client.first_name %}{{ client.first_name }}{% else %}с номером: {{ client.phone }}{% endif %}?</p>
+                </div>
+                <form action="" method="post">{% csrf_token %}
+                    <div class="modal-footer">
+                        <button class="btn btn-danger">Да, хочу</button>
+                        <a href="{% url 'home' %}">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Нет, спасибо</button>
+                        </a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 {% endblock %}

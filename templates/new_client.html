@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Клиенты{% endblock %}
+
+{% block title %}
+    {% if edit %}
+        Изменение клиента
+    {% else %}
+        Добавление клиентов
+    {% endif %}
+{% endblock %}
 
 {% load static %}
 {% load user_filters %}
@@ -12,59 +19,61 @@
 
 
 {% block content %}
-        <form class="form" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="card mx-5 mt-4">
-                <div class="card-body shadow-sm bg-white rounded">
-                    <div id="original_form">
-                        <div class="container mt-3 shadow bg-white rounded-top">
-                            <div class="row">
-                                <div class="container pt-4">
-                                    <div class="col-12 d-grid gap-4 d-md-flex justify-content-md-end">
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mx-5 mt-4">
+            <div class="card-body shadow-sm bg-white rounded">
+                <div id="original_form">
+                    <div class="container mt-3 shadow bg-white rounded-top">
+                        <div class="row">
+                            <div class="container pt-4">
+                                <div class="col-12 d-grid gap-4 d-md-flex justify-content-md-end">
+                                    {% if not edit %}
                                         <button type="submit" class="btn btn-outline-primary shadow bg-white rounded"
                                                 onclick="duplicate()">
                                             <span data-feather="user-plus"></span>
                                         </button>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <label for="{{ form.first_name.id_for_label }}_1" id="first_name_1"
-                                           class="col-sm-2 col-form-label">{{ form.first_name.label }}</label>
-                                    {{ form.first_name }}
-                                </div>
-                                <div class="col">
-                                    <label for="{{ form.last_name.id_for_label }}" id="last_name_1"
-                                           class="col-sm-2 col-form-label">{{ form.last_name.label }}</label>
-                                    {{ form.last_name }}
+                                    {% endif %}
                                 </div>
                             </div>
-                        </div>
-                        <div class="container py-2 shadow bg-white rounded-bottom">
-                            <div class="row pb-3">
-                                <div class="col">
-                                    <label for="{{ form.phone.id_for_label }}" id="phone_1"
-                                           class="col-sm-2 col-form-label">{{ form.phone.label }}</label>
-                                    {{ form.phone }}
-                                </div>
-                                <div class="col">
-                                    <label for="{{ form.price.id_for_label }}" id="price_1"
-                                           class="col-sm-2 col-form-label">{{ form.price.label }}</label>
-                                    {{ form.price }}
-                                </div>
+                            <div class="col">
+                                <label for="{{ form.first_name.id_for_label }}_1" id="first_name_1"
+                                       class="col-sm-2 col-form-label">{{ form.first_name.label }}</label>
+                                {{ form.first_name }}
+                            </div>
+                            <div class="col">
+                                <label for="{{ form.last_name.id_for_label }}" id="last_name_1"
+                                       class="col-sm-2 col-form-label">{{ form.last_name.label }}</label>
+                                {{ form.last_name }}
                             </div>
                         </div>
                     </div>
-                    <div id="add_form"></div>
-
-                    <div class="container pt-4">
-                        <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-outline-primary shadow bg-white rounded">Сохранить
-                            </button>
+                    <div class="container py-2 shadow bg-white rounded-bottom">
+                        <div class="row pb-3">
+                            <div class="col">
+                                <label for="{{ form.phone.id_for_label }}" id="phone_1"
+                                       class="col-sm-2 col-form-label">{{ form.phone.label }}</label>
+                                {{ form.phone }}
+                            </div>
+                            <div class="col">
+                                <label for="{{ form.price.id_for_label }}" id="price_1"
+                                       class="col-sm-2 col-form-label">{{ form.price.label }}</label>
+                                {{ form.price }}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div id="add_form"></div>
+
+                <div class="container pt-4">
+                    <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-outline-primary shadow bg-white rounded">Сохранить
+                        </button>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
+    </form>
     <script type="text/javascript" src="{% static '/js/new_client.js' %}"></script>
 {% endblock %}
 
