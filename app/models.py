@@ -9,7 +9,7 @@ class Client(models.Model):
     first_name = models.CharField(max_length=100, blank=True, null=True)
     phone = PhoneNumberField()
     price = models.IntegerField()
-    # count = models.IntegerField()
+    count = models.IntegerField(default=1)
     black_list = models.BooleanField(default=False)
     addition = models.DateTimeField('Дата добавления', auto_now_add=True)
     updated = models.DateTimeField('Дата добавления', auto_now=True)
