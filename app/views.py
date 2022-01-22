@@ -1,7 +1,9 @@
+import clients as clients
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
+from filters import ClientFilter
 from .servises import FormList
 from .forms import ClientForm
 from .models import Client
@@ -13,11 +15,14 @@ class HomeList(ListView):
     context_object_name = 'clients'
 
     def get_queryset(self):
-        return Client.objects.all()
+        qs = Client.objects.all()
+        product_filtered_list = ClientFilter(self.request.GET, queryset=qs)
+        return product_filtered_list.qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['home'] = True
+        context['client_filter'] = ClientFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
 

@@ -12,7 +12,7 @@ class Client(models.Model):
     count = models.IntegerField(default=1)
     black_list = models.BooleanField(default=False)
     addition = models.DateTimeField('Дата добавления', auto_now_add=True)
-    updated = models.DateTimeField('Дата добавления', auto_now=True)
+    updated = models.DateTimeField('Дата последнего посещения', auto_now=True)
 
     def __str__(self):
         return f"{self.last_name} {self.first_name} - {self.phone}"
