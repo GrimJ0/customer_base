@@ -1,27 +1,35 @@
+from pprint import pprint
+
 import clients as clients
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django_filters.views import FilterView
+from django_tables2 import SingleTableView
 
 from filters import ClientFilter
+from tables import ClientTable
 from .servises import FormList
 from .forms import ClientForm
 from .models import Client
 
 
-class HomeList(ListView):
+class HomeList(SingleTableView, FilterView):
     models = Client
     template_name = 'index.html'
     context_object_name = 'clients'
+    filterset_class = ClientFilter
+    table_class = ClientTable
 
     def get_queryset(self):
-        qs = Client.objects.all()
-        product_filtered_list = ClientFilter(self.request.GET, queryset=qs)
-        return product_filtered_list.qs
+        queryset = Client.objects.all()
+        client_filtered_list = ClientFilter(self.request.GET, queryset=queryset)
+        return client_filtered_list.qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['home'] = True
+        pprint(context)
         context['client_filter'] = ClientFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
@@ -63,9 +71,6 @@ class EditRecipeView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['edit'] = True
         return context
-
-    # def form_valid(self, form):
-    #     return super().user_form_valid(self.request, self.get_context_data, form)
 
 
 class RemoveClientView(DeleteView):
