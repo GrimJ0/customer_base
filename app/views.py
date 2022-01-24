@@ -4,8 +4,8 @@ from django.views.generic import CreateView, DeleteView, UpdateView
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 
-from filters import ClientFilter
-from tables import ClientTable
+from .filters import ClientFilter
+from .tables import ClientTable
 from .servises import FormList
 from .forms import ClientForm
 from .models import Client
