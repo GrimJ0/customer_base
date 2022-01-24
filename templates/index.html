@@ -22,8 +22,11 @@
                         <div class="col-md-2">
                             {{ client_filter.form.phone|addcss:"{'class': 'form-control', 'placeholder': 'Телефон'}" }}
                         </div>
-                        <div class="col">
-                            {{ client_filter.form.price|addcss:"{'class': 'form-control', 'placeholder': 'Прайс'}" }}
+                        <div class="col-md-1">
+                            {{ client_filter.form.price_min|addcss:"{'class': 'form-control', 'placeholder': 'Мин. сумма'}" }}
+                        </div>
+                        <div class="col-md-1">
+                            {{ client_filter.form.price_max|addcss:"{'class': 'form-control', 'placeholder': 'Макс. сумма'}" }}
                         </div>
                         <div class="col">
                             {{ client_filter.form.count|addcss:"{'class': 'form-control', 'placeholder': 'Количество посещений'}" }}
@@ -39,10 +42,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-2 mt-2">
-                            {{ client_filter.form.start_data|addcss:"{'class': 'form-control', 'placeholder': 'Дата начала'}" }}
+                            <label for="formGroupExampleInput" class="form-label">Выберите начальную дату</label>
+                            {{ client_filter.form.start_data }}
                         </div>
                         <div class="col-md-2 mt-2">
-                            {{ client_filter.form.end_data|addcss:"{'class': 'form-control', 'placeholder': 'Дата конеца'}" }}
+                            <label for="formGroupExampleInput" class="form-label">Выберите конечную дату</label>
+                            {{ client_filter.form.end_data }}
                         </div>
                     </div>
                 </form>

@@ -6,7 +6,7 @@ from .models import Client
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ["first_name", "last_name", "phone", "price"]
+        fields = ["first_name", "last_name", "phone", "price", "black_list"]
         widgets = {
             'first_name': forms.TextInput(
                 attrs={'class': 'form-control first_name', 'placeholder': 'First name', 'id': 'validationCustom1',
@@ -19,5 +19,7 @@ class ClientForm(forms.ModelForm):
                        'aria-label': 'phone', 'value': '+7'}),
             'price': forms.TextInput(
                 attrs={'class': 'form-control price', 'placeholder': 'price', 'id': 'validationCustom4',
-                       'aria-label': 'price', 'min': '0'})
+                       'aria-label': 'price'}),
+            'black_list': forms.CheckboxInput(
+                attrs={'class': 'form-check-input black_list', 'id': 'flexCheckDefault', 'role': 'switch'})
         }

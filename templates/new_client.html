@@ -70,13 +70,24 @@
                                 {{ form.price }}
                             </div>
                         </div>
+                        {% if edit %}
+                            <div class="col-12">
+                                <div class="form-check form-switch">
+                                    {{ form.black_list }}
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Добавить в чёрный список
+                                    </label>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div id="add_form" class="form_duplic"></div>
                 <div id="save">
                     <div class="container pt-4">
                         <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-outline-primary shadow rounded" onclick="check();">Сохранить
+                            <button type="submit" class="btn btn-outline-primary shadow rounded" onclick="check();">
+                                Сохранить
                             </button>
                         </div>
                     </div>
