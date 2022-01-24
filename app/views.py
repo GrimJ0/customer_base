@@ -1,9 +1,6 @@
-from pprint import pprint
-
-import clients as clients
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 
@@ -16,10 +13,11 @@ from .models import Client
 
 class HomeList(SingleTableView, FilterView):
     models = Client
-    template_name = 'index.html'
-    context_object_name = 'clients'
     filterset_class = ClientFilter
     table_class = ClientTable
+    paginate_by = 12
+    template_name = 'index.html'
+    context_object_name = 'clients'
 
     def get_queryset(self):
         queryset = Client.objects.all()
@@ -29,7 +27,6 @@ class HomeList(SingleTableView, FilterView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['home'] = True
-        pprint(context)
         context['client_filter'] = ClientFilter(self.request.GET, queryset=self.get_queryset())
         return context
 

@@ -3,6 +3,7 @@
 
 
 {% load django_tables2 %}
+{% load user_filters %}
 {% load static %}
 
 
@@ -11,10 +12,39 @@
         <div class="col">
             <div class="card card-body bg-light bg-gradient rounded">
                 <form action="" method="GET">
-                    {{ client_filter.form }}
-                    <button type="submit" class="btn btn-outline-primary">
-                        Поиск
-                    </button>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{ client_filter.form.first_name|addcss:"{'class': 'form-control', 'placeholder': 'Имя'}" }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ client_filter.form.last_name|addcss:"{'class': 'form-control', 'placeholder': 'Фамилия'}" }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ client_filter.form.phone|addcss:"{'class': 'form-control', 'placeholder': 'Телефон'}" }}
+                        </div>
+                        <div class="col">
+                            {{ client_filter.form.price|addcss:"{'class': 'form-control', 'placeholder': 'Прайс'}" }}
+                        </div>
+                        <div class="col">
+                            {{ client_filter.form.count|addcss:"{'class': 'form-control', 'placeholder': 'Количество посещений'}" }}
+                        </div>
+                        <div class="col-auto">
+                            {{ client_filter.form.black_list|addcss:"{'class': 'form-select', 'id': 'autoSizingSelect'}" }}
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary">
+                                Поиск
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 mt-2">
+                            {{ client_filter.form.start_data|addcss:"{'class': 'form-control', 'placeholder': 'Дата начала'}" }}
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            {{ client_filter.form.end_data|addcss:"{'class': 'form-control', 'placeholder': 'Дата конеца'}" }}
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -27,7 +57,7 @@
         </div>
 
 
-    {% render_table table %}
+        {% render_table table %}
 
 
     </div>
