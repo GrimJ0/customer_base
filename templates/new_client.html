@@ -14,14 +14,14 @@
 {% block content %}
     <form class="form needs-validation" method="post" enctype="multipart/form-data" onsubmit="return checkform();">
         {% csrf_token %}
-        <div class="card mx-5 mt-4">
+        <div class="card mx-6 mt-4">
             <div class="card-body shadow-sm bg-white rounded">
                 <div id="add_save"></div>
                 <div id="original_form" class="original_form form_1">
                     <div class="container mt-3 shadow bg-white rounded-top">
-                        <div class="row">
+                        <div class="row px-4">
                             <div class="container pt-4">
-                                <div class="col-12 d-grid gap-4 d-md-flex justify-content-md-end">
+                                <div class="col-12 d-grid pe-4 gap-4 d-md-flex justify-content-md-end">
                                     {% if not edit %}
                                         <button type="button" class="btn btn-outline-danger shadow rounded del"
                                                 onclick="deleteRow(this.parentNode)" disabled>
@@ -45,12 +45,12 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col pe-5">
                                 <label for="{{ form.first_name.id_for_label }}_1" id="first_name_1"
                                        class="col-sm-2 col-form-label">{{ form.first_name.label }}</label>
                                 {{ form.first_name }}
                             </div>
-                            <div class="col">
+                            <div class="col ps-5">
                                 <label for="{{ form.last_name.id_for_label }}" id="last_name_1"
                                        class="col-sm-2 col-form-label">{{ form.last_name.label }}</label>
                                 {{ form.last_name }}
@@ -58,13 +58,13 @@
                         </div>
                     </div>
                     <div class="container py-2 shadow bg-white rounded-bottom">
-                        <div class="row pb-3">
-                            <div class="col">
+                        <div class="row pb-3 px-4">
+                            <div class="col pe-5">
                                 <label for="{{ form.phone.id_for_label }}" id="phone_1"
                                        class="col-sm-2 col-form-label">{{ form.phone.label }}</label>
                                 {{ form.phone }}
                             </div>
-                            <div class="col">
+                            <div class="col ps-5">
                                 <label for="{{ form.price.id_for_label }}" id="price_1"
                                        class="col-sm-2 col-form-label">{{ form.price.label }}</label>
                                 {{ form.price }}

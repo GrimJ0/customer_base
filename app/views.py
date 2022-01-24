@@ -15,7 +15,7 @@ class HomeList(SingleTableView, FilterView):
     models = Client
     filterset_class = ClientFilter
     table_class = ClientTable
-    paginate_by = 12
+    paginate_by = 9
     template_name = 'index.html'
     context_object_name = 'clients'
 

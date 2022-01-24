@@ -12,29 +12,23 @@
         <link rel="stylesheet"
               href="{% static '/bootstrap-5.1.3/site/content/docs/5.1/examples/dashboard/dashboard.css' %}">
     {% endblock %}
-    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+
 </head>
 <body>
 
 {% include 'skeleton/nav.html' %}
 
-<div class="container-fluid">
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<main>
+    <div class="container">
         {% block content %}
 
         {% endblock content %}
-    </main>
-</div>
+    </div>
+</main>
 
-{% block js %}
-    <script src="{% static '/bootstrap-5.1.3/dist/js/bootstrap.bundle.min.js' %}"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-
-    <script src="{% static '/bootstrap-5.1.3/site/content/docs/5.1/examples/dashboard/dashboard.js' %}"></script>
-    {#    <script type="text/javascript" src="{% static '/js/index.js' %}"></script>#}
-
-{% endblock %}
+<script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static '/bootstrap-5.1.3/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/index.js' %}"></script>
 
 </body>
 </html>

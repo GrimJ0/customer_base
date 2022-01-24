@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Клиенты{% endblock %}
+{% block title %}Список клиентов{% endblock %}
 
 
 {% load django_tables2 %}
@@ -14,25 +14,26 @@
                 <form action="" method="GET">
                     <div class="row">
                         <div class="col-md-2">
-                            {{ client_filter.form.first_name|addcss:"{'class': 'form-control', 'placeholder': 'Имя'}" }}
+
+                            {{ client_filter.form.first_name|addcss:"{'class': 'form-control', 'placeholder': 'Имя', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите имя'}" }}
                         </div>
                         <div class="col-md-2">
-                            {{ client_filter.form.last_name|addcss:"{'class': 'form-control', 'placeholder': 'Фамилия'}" }}
+                            {{ client_filter.form.last_name|addcss:"{'class': 'form-control', 'placeholder': 'Фамилия', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите фамилию'}" }}
                         </div>
                         <div class="col-md-2">
-                            {{ client_filter.form.phone|addcss:"{'class': 'form-control', 'placeholder': 'Телефон'}" }}
+                            {{ client_filter.form.phone|addcss:"{'class': 'form-control', 'placeholder': 'Телефон', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите телефон'}" }}
                         </div>
                         <div class="col-md-1">
-                            {{ client_filter.form.price_min|addcss:"{'class': 'form-control', 'placeholder': 'Мин. сумма'}" }}
+                            {{ client_filter.form.price_min|addcss:"{'class': 'form-control', 'placeholder': 'Мин. сумма', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите минимальную сумму'}" }}
                         </div>
                         <div class="col-md-1">
-                            {{ client_filter.form.price_max|addcss:"{'class': 'form-control', 'placeholder': 'Макс. сумма'}" }}
+                            {{ client_filter.form.price_max|addcss:"{'class': 'form-control', 'placeholder': 'Макс. сумма', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите максимальную сумму'}" }}
                         </div>
-                        <div class="col">
-                            {{ client_filter.form.count|addcss:"{'class': 'form-control', 'placeholder': 'Количество посещений'}" }}
+                        <div class="col-md-1">
+                            {{ client_filter.form.count|addcss:"{'class': 'form-control', 'placeholder': 'Количество посещений', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Укажите количество посещений'}" }}
                         </div>
                         <div class="col-auto">
-                            {{ client_filter.form.black_list|addcss:"{'class': 'form-select', 'id': 'autoSizingSelect'}" }}
+                            {{ client_filter.form.black_list|addcss:"{'class': 'form-select', 'id': 'autoSizingSelect', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Выберите людей в черном списке'}" }}
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-outline-primary">
@@ -43,11 +44,11 @@
                     <div class="row">
                         <div class="col-md-2 mt-2">
                             <label for="formGroupExampleInput" class="form-label">Выберите начальную дату</label>
-                            {{ client_filter.form.start_data }}
+                            {{ client_filter.form.start_data|addcss:"{'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Выберите начальную дату'}" }}
                         </div>
                         <div class="col-md-2 mt-2">
                             <label for="formGroupExampleInput" class="form-label">Выберите конечную дату</label>
-                            {{ client_filter.form.end_data }}
+                            {{ client_filter.form.end_data|addcss:"{'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'title': 'Выберите конечную дату'}" }}
                         </div>
                     </div>
                 </form>
@@ -57,14 +58,14 @@
 
 
     <div class="container-fluid card mt-4 bg-light bg-gradient rounded h-100">
-        <div class="toolbar mt-4">
+        <div class="toolbar mt-2">
             <p class="text-center fs-4">Список Клиентов</p>
         </div>
-
 
         {% render_table table %}
 
 
     </div>
+
 
 {% endblock %}

@@ -77,7 +77,7 @@ function deleteRow(obj) {
             elems[j].disabled = true;
         }
     }
-    if (elems.length < 4) {
+    if (elems.length < 4 && save_elem != null) {
         save_elem.remove()
     }
 }
