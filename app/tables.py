@@ -12,5 +12,5 @@ class ClientTable(tables.Table):
         fields = ('first_name', 'last_name', 'phone', 'price', 'count', 'addition', 'updated')
         attrs = {
             'class': 'table table-hover',
-            'th': {'class': 'col'}
+            'th': {'class': 'col text-secondary alert-link'}
         }
