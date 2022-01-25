@@ -44,11 +44,11 @@ Customer base это онлайн-сервис, для добавления кл
    ```
    python manage.py migrate
    ```
-5)Cоздайте суперпользователя:
+5) Cоздайте суперпользователя:
    ```
    python manage.py createsuperuser
    ```
-6)Запустите сервер:
+6) Запустите сервер:
    Через команду:
    ```
    python manage.py runserver
